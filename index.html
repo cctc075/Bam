@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art of You | Cinematic Gallery</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ================= Core Setup ================= */
+        :root {
+            --bg-image: url('/images/9.jpg');
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent: #ff4d6d;
+        }
+
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            /* เพิ่มเลเยอร์ทึบเพื่อดึงความสว่างของภาพพื้นหลังให้มืดลง */
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), var(--bg-image) center/cover no-repeat fixed, var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ================= Typography & Hero ================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4rem, 10vw, 10rem);
+            font-weight: 600;
+            text-align: center;
+            line-height: 1;
+            z-index: 2;
+            mix-blend-mode: exclusion; /* เทคนิคขั้นสุดให้ตัวหนังสือตัดกับสีพื้นหลัง */
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-weight: 200;
+            z-index: 2;
+        }
+
+        /* รูปภาพลอยในหน้าแรก */
+        .hero-img-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40vw;
+            height: 60vh;
+            object-fit: cover;
+            opacity: 0.6;
+            filter: grayscale(50%);
+            z-index: 1;
+        }
+
+        /* ================= Parallax Gallery ================= */
+        .gallery-container {
+            padding: 20vh 5vw;
+            position: relative;
+        }
+
+        .gallery-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30vh;
+            position: relative;
+        }
+
+        /* สลับซ้ายขวา */
+        .gallery-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .img-wrapper {
+            width: 45vw;
+            height: 70vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 130%; /* เผื่อพื้นที่ให้รูปขยับขึ้นลง (Parallax) */
+            object-fit: cover;
+            position: absolute;
+            top: -15%;
+            left: 0;
+        }
+
+        .text-wrapper {
+            width: 40vw;
+            padding: 0 40px;
+        }
+
+        .text-wrapper h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 5rem);
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .text-wrapper p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 200;
+            color: #aaaaaa;
+        }
+
+        /* ================= Progress Bar ================= */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar"></div>
+
+    <div class="main-wrap">
+        <section class="hero">
+            <h1 class="hero-title" data-speed="0.8">NANTARAT</h1>
+            <p class="hero-subtitle" data-speed="1.2">The person behind my smiles</p>
+            
+        </section>
+
+        <section class="gallery-container">
+            
+            <div class="gallery-item">
+                <div class="img-wrapper">
+                    <img src="/images/1.jpg" class="parallax-img" alt="Gallery">
+                </div>
+                <div class="text-wrapper text-reveal">
+                    <h2>Chapter I : The Spark</h2>
+                    <p>วินาทีแรกที่ได้รู้จัก โลกที่เคยธรรมดาก็เปลี่ยนไปตลอดกาล รอยยิ้มนี้คือจุดเริ่มต้นของทุกอย่าง</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="img-wrapper">
+                    <img src="/images/2.jpg" class="parallax-img" alt="Gallery">
+                </div>
+                <div class="text-wrapper text-reveal">
+                    <h2>Chapter II : Adventure</h2>
+                    <p>ทุกการเดินทางมีความหมายมากขึ้น เมื่อมีคนคนนี้เดินอยู่ข้างๆ ไม่ว่าจะหลงทางหรือเหนื่อยแค่ไหนก็ตาม</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="img-wrapper">
+                    <img src="/images/5.jpg" class="parallax-img" alt="Gallery">
+                </div>
+                <div class="text-wrapper text-reveal">
+                    <h2>Chapter III : Now & Forever</h2>
+                    <p>แค่ได้มองหน้าก็รู้แล้วว่า ความโชคดีที่สุดในชีวิต คือการได้มีคนน่ารักแบบนี้อยู่ด้วยกัน</p>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // 1. Setup Lenis (เปิดใช้งานความสมูทในการเลื่อนเมาส์ระดับเนยละลาย)
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // 2. Setup GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ผูก Lenis เข้ากับ GSAP ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+
+        // 3. Animation: Progress Bar แถบสีวิ่งด้านบนตามการ Scroll
+        gsap.to(".progress-bar", {
+            width: "100%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.3
+            }
+        });
+
+        // 4. Animation: หน้าปก Hero Section (ตัวหนังสือและรูปเลื่อนด้วยความเร็วต่างกัน)
+        gsap.to("[data-speed]", {
+            y: (i, el) => (1 - parseFloat(el.getAttribute("data-speed"))) * ScrollTrigger.maxScroll(window),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 0
+            }
+        });
+
+        // 5. Animation: Parallax รูปภาพ (รูปจะค่อยๆ เลื่อนลงในกรอบตอนที่เราไถจอ)
+        gsap.utils.toArray(".img-wrapper").forEach(wrapper => {
+            const img = wrapper.querySelector("img");
+            
+            gsap.to(img, {
+                y: "30%", // เลื่อนรูปภาพลง
+                ease: "none",
+                scrollTrigger: {
+                    trigger: wrapper,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        });
+
+        // 6. Animation: ตัวอักษรค่อยๆ ปรากฏและลอยขึ้น (Text Reveal)
+        gsap.utils.toArray(".text-reveal").forEach(text => {
+            gsap.from(text, {
+                y: 100,
+                opacity: 0,
+                duration: 1.5,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 80%", // ทำงานเมื่อกล่องข้อความโผล่มา 80% ของหน้าจอ
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+    </script>
+</body>
+</html>
