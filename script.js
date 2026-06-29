@@ -90,3 +90,51 @@ function toggleMusic() {
         icon.innerHTML = '🎶';
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const galleryGrid = document.getElementById('gallery-grid');
+    if (!galleryGrid) return; 
+
+    const totalImages = 14;
+
+    for (let i = 1; i <= totalImages; i++) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'img-wrapper';
+        wrapper.innerHTML = `<img src="images/${i}.jpg" loading="lazy" alt="Image ${i}">`;
+        galleryGrid.appendChild(wrapper);
+    }
+
+    // ต้องใส่บรรทัดนี้หลังจาก loop สร้างรูปเสร็จ
+    ScrollTrigger.refresh(); 
+});
+
+// เพิ่มตัวแปร global ไว้บนสุดของไฟล์ script.js
+let currentPlayingBtn = null;
+
+function playMusic(songName, btn) {
+    const audio = document.getElementById('audio-player');
+    
+    // 1. ถ้ามีเพลงเล่นอยู่และกดปุ่มเดิม (เพลงเดิม) -> ให้หยุด
+    if (!audio.paused && currentPlayingBtn === btn) {
+        audio.pause();
+        btn.innerText = '▶️ Play';
+        currentPlayingBtn = null; // รีเซ็ตสถานะ
+    } 
+    // 2. ถ้ากดเพลงใหม่
+    else {
+        // หยุดเพลงเก่าก่อน (ถ้ามี)
+        audio.pause();
+        if (currentPlayingBtn) {
+            currentPlayingBtn.innerText = '▶️ Play';
+        }
+
+        // เล่นเพลงใหม่
+        audio.src = `song/${songName}`; 
+        audio.play();
+        
+        // อัปเดตสถานะปุ่ม
+        btn.innerText = '⏸️ Pause';
+        currentPlayingBtn = btn;
+    }
+}
+
