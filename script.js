@@ -138,3 +138,23 @@ function playMusic(songName, btn) {
     }
 }
 
+function updateTimer() {
+    // กำหนดวันที่เริ่มคบกัน (ปี, เดือน-1, วัน, ชม, นาที, วินาที)
+    // ตัวอย่าง: วันที่ 1 มกราคม 2026
+    const startDate = new Date("2026-06-24T00:00:00"); 
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML = 
+        `${days} วัน ${hours} ชั่วโมง ${minutes} นาที ${seconds} วินาที`;
+}
+
+// อัปเดตทุก 1 วินาที
+setInterval(updateTimer, 1000);
+updateTimer(); // เรียกใช้งานทันทีเมื่อโหลดหน้า
+
