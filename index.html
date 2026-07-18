@@ -4,55 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#000000">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>The Art of You | Cinematic Gallery</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- เมนูนำทาง -->
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="story.html" class="nav-link">Our Story</a>
-        <a href="gallery.html" class="nav-link">Gallery</a>
-        <a href="favorite.html" class="nav-link">Favorite</a>
-        <a href="login.html" class="nav-link">Secret</a>
-    </div>
-</nav>
 
-<div class="anniversary-counter">
-    <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">Together For</div>
-    <div id="timer">
-        <!-- ตัวเลขจะแสดงที่นี่ -->
-    </div>
-</div>
+    <!-- 1. ส่วนของพื้นหลัง -->
+    <div class="video-overlay"></div>
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="favimg/vdo1.mp4" type="video/mp4">
+    </video>
 
-<button id="musicButton" class="floating-music-btn" type="button" onclick="toggleMusic()">
-    <span id="musicIcon">🎶</span>
-</button>
+    <!-- 2. เมนูนำทาง -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="story.html" class="nav-link">Our Story</a>
+            <a href="gallery.html" class="nav-link">Gallery</a>
+            <a href="favorite.html" class="nav-link">Favorite</a>
+            <a href="login.html" class="nav-link">Secret</a>
+        </div>
+    </nav>
 
-<audio id="myAudio" loop>
-    <source src="song/พบรัก.mp3" type="audio/mpeg">
-</audio>
+    <!-- 3. ส่วนของเนื้อหาหลัก -->
+    <main class="main-wrap">
+        
+        <div class="progress-bar"></div>
 
-    <div class="progress-bar"></div>
-
-    <div class="main-wrap">
         <section class="hero">
             <h1 class="hero-title" data-speed="0.8">NANTARAT</h1>
             <p class="hero-subtitle" data-speed="1.2">The person behind my smiles</p>
             
+            <div class="anniversary-counter">
+                <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">Together For</div>
+                <div id="timer"></div>
+            </div>
         </section>
 
         <section class="gallery-container">
-            
             <div class="gallery-item">
-                <div class="img-wrapper">
-                    <img src="images/1.jpg" class="parallax-img" alt="Gallery">
-                </div>
+                <div class="img-wrapper"><img src="images/1.jpg" class="parallax-img" alt="Gallery"></div>
                 <div class="text-wrapper text-reveal">
                     <h2>Chapter I : The Spark</h2>
                     <p>วินาทีแรกที่ได้รู้จัก โลกที่เคยธรรมดาก็เปลี่ยนไปตลอดกาล รอยยิ้มนี้คือจุดเริ่มต้นของทุกอย่าง</p>
@@ -60,9 +56,7 @@
             </div>
 
             <div class="gallery-item">
-                <div class="img-wrapper">
-                    <img src="images/2.jpg" class="parallax-img" alt="Gallery">
-                </div>
+                <div class="img-wrapper"><img src="images/2.jpg" class="parallax-img" alt="Gallery"></div>
                 <div class="text-wrapper text-reveal">
                     <h2>Chapter II : Adventure</h2>
                     <p>ทุกการเดินทางมีความหมายมากขึ้น เมื่อมีคนคนนี้เดินอยู่ข้างๆ ไม่ว่าจะหลงทางหรือเหนื่อยแค่ไหนก็ตาม</p>
@@ -70,18 +64,22 @@
             </div>
 
             <div class="gallery-item">
-                <div class="img-wrapper">
-                    <img src="images/5.jpg" class="parallax-img" alt="Gallery">
-                </div>
+                <div class="img-wrapper"><img src="images/5.jpg" class="parallax-img" alt="Gallery"></div>
                 <div class="text-wrapper text-reveal">
                     <h2>Chapter III : Now & Forever</h2>
                     <p>แค่ได้มองหน้าก็รู้แล้วว่า ความโชคดีที่สุดในชีวิต คือการได้มีคนน่ารักแบบนี้อยู่ด้วยกัน</p>
                 </div>
             </div>
-
         </section>
-    </div>
+    </main>
 
+    <!-- 4. ส่วนของสื่อ (ซ่อนไว้) -->
+    <button id="musicButton" class="floating-music-btn" type="button" onclick="toggleMusic()">
+        <span id="musicIcon">🎶</span>
+    </button>
+    <audio id="myAudio" loop><source src="song/outro.mp3" type="audio/mpeg"></audio>
+
+    <!-- 5. Scripts -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>

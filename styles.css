@@ -302,3 +302,25 @@ body {
     margin-top: 10px;
     color: #ffd1dc; /* ใช้สีชมพูอ่อนที่เข้ากับธีม */
 }
+
+.background-video {
+    position: fixed; /* ตรึงให้อยู่กับที่ */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* บังคับให้วิดีโอเต็มจอโดยไม่ผิดสัดส่วน */
+    z-index: -1; /* ให้อยู่หลังเนื้อหาทั้งหมด */
+}
+
+/* เพิ่มความมืด (Overlay) ให้วิดีโอ เพื่อให้ตัวอักษรสีขาวอ่านง่ายขึ้น */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* ปรับความเข้มได้ตามต้องการ (0.5 คือ 50%) */
+    z-index: -1;
+}
