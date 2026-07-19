@@ -15,9 +15,18 @@
 
     <!-- 1. ส่วนของพื้นหลัง -->
     <div class="video-overlay"></div>
-    <video autoplay loop muted playsinline class="background-video">
-    <source src="favImg/vdo1.mp4" type="video/mp4">
-</video>
+    <video autoplay loop muted playsinline class="background-video" id="backgroundVideo" controls>
+        <source id="bgSource" src="favImg/vdo1.mp4" type="video/mp4">
+    </video>
+    <script>
+    (function(){
+        const vid = document.getElementById('backgroundVideo');
+        const src = document.getElementById('bgSource');
+        try { src.src = encodeURI(src.getAttribute('src')); } catch(e){}
+        vid.addEventListener('error', ()=>{ console.error('Video error', vid.error); });
+        fetch(src.src, {method:'HEAD'}).then(r=>console.log('Video HEAD status', r.status)).catch(e=>console.error('Video fetch error', e));
+    })();
+    </script>
 
     <!-- 2. เมนูนำทาง -->
     <nav class="navbar">
