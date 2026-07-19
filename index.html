@@ -24,7 +24,13 @@
         const src = document.getElementById('bgSource');
         try { src.src = encodeURI(src.getAttribute('src')); } catch(e){}
         vid.addEventListener('error', ()=>{ console.error('Video error', vid.error); });
-        fetch(src.src, {method:'HEAD'}).then(r=>console.log('Video HEAD status', r.status)).catch(e=>console.error('Video fetch error', e));
+        fetch(src.src, {method:'HEAD'}).then(r=>{
+            console.log('Video HEAD status', r.status);
+            if (r.status === 200) {
+                // remove body background image to ensure video is visible behind content
+                try { document.body.style.backgroundImage = 'none'; } catch(e){}
+            }
+        }).catch(e=>console.error('Video fetch error', e));
     })();
     </script>
 
